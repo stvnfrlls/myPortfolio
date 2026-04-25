@@ -1,536 +1,1171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <title>Steven Frilles</title>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Steven Frilles — Web Developer</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900"
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap"
       rel="stylesheet" />
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css" />
-    <link rel="stylesheet" href="css/animate.css" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    <link rel="stylesheet" href="css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
-    <link rel="stylesheet" href="css/magnific-popup.css" />
+      :root {
+        --bg: #0d0c0b;
+        --bg-2: #141312;
+        --text: #f0ece5;
+        --muted: #7a756e;
+        --accent: #d4845a;
+        --accent-pale: rgba(212, 132, 90, 0.08);
+        --border: rgba(240, 236, 229, 0.08);
+        --serif: "DM Serif Display", Georgia, serif;
+        --mono: "DM Mono", monospace;
+        --sans: "DM Sans", sans-serif;
+      }
 
-    <link rel="stylesheet" href="css/aos.css" />
+      html {
+        scroll-behavior: smooth;
+      }
 
-    <link rel="stylesheet" href="css/ionicons.min.css" />
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--sans);
+        font-weight: 300;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
 
-    <link rel="stylesheet" href="css/flaticon.css" />
-    <link rel="stylesheet" href="css/icomoon.css" />
-    <link rel="stylesheet" href="css/style.css" />
+      ::selection {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      /* ---- Scrollbar ---- */
+      ::-webkit-scrollbar {
+        width: 3px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--accent);
+      }
+
+      /* ---- NAV ---- */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding: 28px 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        mix-blend-mode: normal;
+        transition:
+          background 0.4s,
+          padding 0.4s;
+      }
+
+      nav.scrolled {
+        background: rgba(13, 12, 11, 0.92);
+        backdrop-filter: blur(12px);
+        padding: 18px 60px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-logo {
+        font-family: var(--serif);
+        font-size: 1.25rem;
+        color: var(--text);
+        text-decoration: none;
+        letter-spacing: 0.01em;
+      }
+
+      .nav-logo span {
+        color: var(--accent);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 40px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        color: var(--muted);
+        text-decoration: none;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      /* ---- HERO ---- */
+      #home {
+        min-height: 100vh;
+        display: flex;
+        align-items: flex-end;
+        padding: 0 60px 80px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-grain {
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none;
+        opacity: 0.6;
+      }
+
+      .hero-bg-text {
+        position: absolute;
+        bottom: -40px;
+        right: -20px;
+        font-family: var(--serif);
+        font-size: clamp(120px, 18vw, 280px);
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(240, 236, 229, 0.04);
+        line-height: 1;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .hero-inner {
+        position: relative;
+        max-width: 900px;
+      }
+
+      .hero-label {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 20px;
+        opacity: 0;
+        animation: fadeUp 0.8s 0.2s ease forwards;
+      }
+
+      .hero-name {
+        font-family: var(--serif);
+        font-size: clamp(52px, 8vw, 110px);
+        line-height: 0.95;
+        letter-spacing: -0.02em;
+        margin-bottom: 32px;
+        opacity: 0;
+        animation: fadeUp 0.8s 0.4s ease forwards;
+      }
+
+      .hero-name em {
+        font-style: italic;
+        color: var(--accent);
+      }
+
+      .hero-desc {
+        font-size: 1rem;
+        color: var(--muted);
+        max-width: 420px;
+        line-height: 1.75;
+        opacity: 0;
+        animation: fadeUp 0.8s 0.6s ease forwards;
+      }
+
+      .hero-scroll {
+        position: absolute;
+        bottom: 80px;
+        right: 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        opacity: 0;
+        animation: fadeUp 0.8s 0.9s ease forwards;
+      }
+
+      .hero-scroll span {
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--muted);
+        writing-mode: vertical-rl;
+      }
+
+      .scroll-line {
+        width: 1px;
+        height: 60px;
+        background: linear-gradient(to bottom, var(--accent), transparent);
+        animation: lineGrow 1.5s 1.2s ease forwards;
+        transform-origin: top;
+        transform: scaleY(0);
+      }
+
+      @keyframes lineGrow {
+        to {
+          transform: scaleY(1);
+        }
+      }
+
+      /* ---- SECTION SHARED ---- */
+      section {
+        padding: 120px 60px;
+      }
+
+      .section-label {
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .section-label::before {
+        content: "";
+        display: block;
+        width: 28px;
+        height: 1px;
+        background: var(--accent);
+      }
+
+      .section-title {
+        font-family: var(--serif);
+        font-size: clamp(36px, 5vw, 60px);
+        letter-spacing: -0.02em;
+        line-height: 1.05;
+        margin-bottom: 60px;
+      }
+
+      /* ---- ABOUT ---- */
+      #about {
+        background: var(--bg-2);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: start;
+      }
+
+      .about-text p {
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.85;
+        margin-bottom: 24px;
+      }
+
+      .about-text p strong {
+        color: var(--text);
+        font-weight: 500;
+      }
+
+      .about-info {
+        list-style: none;
+        margin-top: 40px;
+        border-top: 1px solid var(--border);
+      }
+
+      .about-info li {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 20px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.88rem;
+      }
+
+      .about-info li .label {
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding-top: 2px;
+      }
+
+      .about-info li .value {
+        color: var(--text);
+      }
+
+      .cv-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 32px;
+        padding: 12px 28px;
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition:
+          background 0.25s,
+          color 0.25s;
+      }
+
+      .cv-btn:hover {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      .about-right {
+        position: relative;
+      }
+
+      .about-photo-wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 3/4;
+        overflow: hidden;
+      }
+
+      .about-photo-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(30%);
+        transition: filter 0.4s;
+      }
+
+      .about-photo-wrap:hover img {
+        filter: grayscale(0%);
+      }
+
+      .about-photo-wrap::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 50%,
+          rgba(13, 12, 11, 0.6)
+        );
+      }
+
+      .about-photo-accent {
+        position: absolute;
+        top: -16px;
+        left: -16px;
+        width: 80px;
+        height: 80px;
+        border: 1px solid var(--accent);
+        pointer-events: none;
+      }
+
+      /* ---- RESUME ---- */
+      #resume {
+        background: var(--bg);
+      }
+
+      .resume-cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+      }
+
+      .resume-col h3 {
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 40px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .timeline-item {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 44px;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 6px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+
+      .timeline-item::after {
+        content: "";
+        position: absolute;
+        left: 2px;
+        top: 14px;
+        width: 1px;
+        height: calc(100% + 8px);
+        background: var(--border);
+      }
+
+      .timeline-item:last-child::after {
+        display: none;
+      }
+
+      .tl-date {
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+
+      .tl-title {
+        font-family: var(--serif);
+        font-size: 1.2rem;
+        letter-spacing: -0.01em;
+        margin-bottom: 4px;
+      }
+
+      .tl-org {
+        font-size: 0.8rem;
+        color: var(--accent);
+        margin-bottom: 10px;
+        font-family: var(--mono);
+      }
+
+      .tl-desc {
+        font-size: 0.88rem;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      /* ---- SKILLS ---- */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+        margin-top: 40px;
+        border: 1px solid var(--border);
+      }
+
+      .skill-item {
+        padding: 18px 20px;
+        border-bottom: 1px solid var(--border);
+        border-right: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.2s;
+      }
+
+      .skill-item:hover {
+        background: var(--accent-pale);
+      }
+      .skill-item:nth-child(even) {
+        border-right: none;
+      }
+
+      .skill-name {
+        font-size: 0.9rem;
+        font-family: var(--mono);
+        color: var(--text);
+      }
+
+      .skill-bar-wrap {
+        width: 80px;
+        height: 2px;
+        background: var(--border);
+        position: relative;
+      }
+
+      .skill-bar-fill {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background: var(--accent);
+        transition: width 1.2s ease;
+      }
+
+      /* ---- PROJECTS ---- */
+      #projects {
+        background: var(--bg-2);
+        border-top: 1px solid var(--border);
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2px;
+      }
+
+      .project-card {
+        position: relative;
+        aspect-ratio: 4/3;
+        overflow: hidden;
+        background: var(--bg);
+        cursor: pointer;
+      }
+
+      .project-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(60%) brightness(0.5);
+        transition:
+          filter 0.5s,
+          transform 0.6s ease;
+      }
+
+      .project-card:hover img {
+        filter: grayscale(0%) brightness(0.65);
+        transform: scale(1.04);
+      }
+
+      /* Icon variant — logo displayed small and centered */
+      .project-card--icon {
+        background: #111010;
+      }
+
+      .project-card--icon img {
+        position: absolute;
+        width: 38%;
+        height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -60%);
+        object-fit: contain;
+        filter: none;
+        opacity: 0.85;
+        transition:
+          opacity 0.4s,
+          transform 0.4s ease;
+      }
+
+      .project-card--icon:hover img {
+        opacity: 1;
+        filter: none;
+        transform: translate(-50%, -62%) scale(1.06);
+      }
+
+      .project-info {
+        position: absolute;
+        inset: 0;
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background: linear-gradient(
+          to top,
+          rgba(13, 12, 11, 0.9) 0%,
+          transparent 60%
+        );
+      }
+
+      .project-tag {
+        font-family: var(--mono);
+        font-size: 0.62rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+
+      .project-name {
+        font-family: var(--serif);
+        font-size: 1.5rem;
+        letter-spacing: -0.01em;
+        line-height: 1.15;
+        margin-bottom: 8px;
+      }
+
+      .project-sub {
+        font-size: 0.82rem;
+        color: rgba(240, 236, 229, 0.55);
+        line-height: 1.5;
+        margin-bottom: 16px;
+        max-width: 340px;
+      }
+
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        text-decoration: none;
+        opacity: 0;
+        transform: translateY(6px);
+        transition:
+          opacity 0.3s 0.05s,
+          transform 0.3s 0.05s;
+      }
+
+      .project-link::after {
+        content: "";
+        display: block;
+        width: 20px;
+        height: 1px;
+        background: var(--accent);
+        transition: width 0.2s;
+      }
+
+      .project-link:hover::after {
+        width: 36px;
+      }
+
+      .project-card:hover .project-link {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .project-num {
+        position: absolute;
+        top: 24px;
+        right: 28px;
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        color: rgba(240, 236, 229, 0.2);
+        letter-spacing: 0.1em;
+      }
+
+      /* No-image placeholder */
+      .project-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .project-placeholder-inner {
+        font-family: var(--serif);
+        font-size: clamp(40px, 6vw, 80px);
+        color: rgba(240, 236, 229, 0.04);
+        letter-spacing: -0.04em;
+      }
+
+      /* ---- FOOTER ---- */
+      footer {
+        padding: 60px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .footer-name {
+        font-family: var(--serif);
+        font-size: 1.1rem;
+        color: var(--text);
+      }
+
+      .footer-name span {
+        color: var(--accent);
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 32px;
+        list-style: none;
+      }
+
+      .footer-links a {
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .footer-links a:hover {
+        color: var(--text);
+      }
+
+      .footer-copy {
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        color: var(--muted);
+      }
+
+      /* ---- ANIMATIONS ---- */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ---- MOBILE ---- */
+      @media (max-width: 900px) {
+        nav {
+          padding: 24px 28px;
+        }
+        nav.scrolled {
+          padding: 16px 28px;
+        }
+        .nav-links {
+          gap: 24px;
+        }
+
+        #home {
+          padding: 0 28px 70px;
+        }
+        .hero-scroll {
+          right: 28px;
+        }
+        section {
+          padding: 80px 28px;
+        }
+        footer {
+          padding: 40px 28px;
+          flex-direction: column;
+          gap: 24px;
+          align-items: flex-start;
+        }
+
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+        .about-right {
+          order: -1;
+        }
+        .about-photo-wrap {
+          aspect-ratio: 4/3;
+        }
+
+        .resume-cols {
+          grid-template-columns: 1fr;
+          gap: 60px;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+        .project-card {
+          aspect-ratio: 16/9;
+        }
+        .project-link {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+        .skill-item {
+          border-right: none;
+        }
+      }
+    </style>
   </head>
+  <body>
+    <!-- NAV -->
+    <nav id="main-nav">
+      <a class="nav-logo" href="#home"><span>S</span>teven Frilles</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#projects">Projects</a></li>
+      </ul>
+    </nav>
 
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-    <nav
-      class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target"
-      id="ftco-navbar">
-      <div class="container">
-        <a class="navbar-brand" href="index.html"><span>S</span>teven</a>
-        <button
-          class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
-          type="button"
-          data-toggle="collapse"
-          data-target="#ftco-nav"
-          aria-controls="ftco-nav"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="oi oi-menu"></span> Menu
-        </button>
+    <!-- HERO -->
+    <section id="home">
+      <div class="hero-grain"></div>
+      <div class="hero-bg-text">SF</div>
+      <div class="hero-inner">
+        <p class="hero-label">Available for work</p>
+        <h1 class="hero-name">Steven<br /><em>Frilles</em></h1>
+        <p class="hero-desc">
+          Backend-focused web developer building reliable systems with Laravel,
+          Vue.js, and MySQL. Based in San Pedro, Laguna.
+        </p>
+      </div>
+      <div class="hero-scroll">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
 
-        <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav nav ml-auto">
-            <li class="nav-item">
-              <a href="#home-section" class="nav-link"><span>Home</span></a>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-label">Introduction</div>
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I hold a genuine interest in
+            <strong>backend web development</strong>, with a focus on building
+            well-structured systems that are reliable and easy to maintain. I
+            approach every project with care for the data layer and the logic
+            that drives it.
+          </p>
+          <p>
+            I am committed to continuous learning, and I collaborate closely
+            with teams to deliver full-stack solutions. Whether it is designing
+            a database schema, wiring up an API, or shaping a front-end
+            interface, I bring the same level of attention to each layer.
+          </p>
+          <ul class="about-info">
+            <li>
+              <span class="label">Full name</span>
+              <span class="value">Steven Frilles</span>
             </li>
-            <li class="nav-item">
-              <a href="#about-section" class="nav-link"><span>About</span></a>
+            <li>
+              <span class="label">Date of birth</span>
+              <span class="value">November 3, 1999</span>
             </li>
-            <li class="nav-item">
-              <a href="#resume-section" class="nav-link"><span>Resume</span></a>
+            <li>
+              <span class="label">Location</span>
+              <span class="value">San Pedro, Laguna, Philippines</span>
             </li>
-            <li class="nav-item">
-              <a href="#projects-section" class="nav-link"
-                ><span>Projects</span></a
-              >
+            <li>
+              <span class="label">Email</span>
+              <span class="value">stvnfrlls@gmail.com</span>
+            </li>
+            <li>
+              <span class="label">Phone</span>
+              <span class="value">+63 919 552 7323</span>
             </li>
           </ul>
+          <a href="asset/Resume.pdf" download="Resume.pdf" class="cv-btn"
+            >Download CV</a
+          >
         </div>
-      </div>
-    </nav>
-    <section class="hero-wrap js-fullheight">
-      <div class="overlay"></div>
-      <div class="container">
-        <div
-          class="row no-gutters slider-text js-fullheight justify-content-center align-items-center">
-          <div class="col-lg-8 col-md-6 ftco-animate d-flex align-items-center">
-            <div class="text text-center">
-              <span class="subheading">Hey! I am</span>
-              <h1>Steven Frilles</h1>
-              <h2>
-                I'm a
-                <span
-                  class="txt-rotate"
-                  data-period="2000"
-                  data-rotate='["Aspiring Web Developer."]'></span>
-              </h2>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="mouse">
-        <a href="#" class="mouse-icon">
-          <div class="mouse-wheel">
-            <span class="ion-ios-arrow-round-down"></span>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section
-      class="ftco-about img ftco-section ftco-no-pt ftco-no-pb"
-      id="about-section">
-      <div class="container">
-        <div class="row d-flex no-gutters">
-          <div class="col-md-6 col-lg-6 d-flex">
-            <div class="img-about img d-flex align-items-stretch">
-              <div class="overlay"></div>
-              <div
-                class="img d-flex align-self-stretch align-items-center"
-                style="background-image: url(images/ME.jpg)"></div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-6 pl-md-5 py-5">
-            <div class="row justify-content-start pb-3">
-              <div class="col-md-12 heading-section ftco-animate">
-                <h1 class="big">About</h1>
-                <h2 class="mb-4">About Me</h2>
-                <p>
-                  I hold a genuine interest in backend web development. I'm
-                  eager to apply my knowledge to enhance data support and
-                  functionality. I'm committed to continuous learning and
-                  collaboration, with a humble dedication to refining both
-                  backend and, when necessary, front-end skills for a
-                  well-rounded professional journey.
-                </p>
-                <ul class="about-info mt-4 px-md-0 px-2">
-                  <li class="d-flex">
-                    <span>Name:</span> <span>Client-Steven Frilles</span>
-                  </li>
-                  <li class="d-flex">
-                    <span>Date of birth:</span> <span>November 3, 1999</span>
-                  </li>
-                  <li class="d-flex">
-                    <span>Address:</span>
-                    <span>San Pedro, Laguna Philippines</span>
-                  </li>
-                  <li class="d-flex">
-                    <span>Zip code:</span> <span>4023</span>
-                  </li>
-                  <li class="d-flex">
-                    <span>Email:</span> <span>stvnfrlls@gmail.com</span>
-                  </li>
-                  <li class="d-flex">
-                    <span>Phone: </span> <span>+63-919-552-7323</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="counter-wrap ftco-animate d-flex mt-md-3">
-              <div class="text">
-                <p>
-                  <a
-                    href="asset\Resume.pdf"
-                    download="Resume.pdf"
-                    class="btn btn-primary py-3 px-3"
-                    >Download CV</a
-                  >
-                </p>
-              </div>
-            </div>
+        <div class="about-right reveal" style="transition-delay: 0.15s">
+          <div class="about-photo-accent"></div>
+          <div class="about-photo-wrap">
+            <img src="images/ME.jpg" alt="Steven Frilles" />
           </div>
         </div>
       </div>
     </section>
 
-    <section class="ftco-section ftco-no-pb goto-here" id="resume-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-            <nav id="navi">
-              <ul>
-                <li><a href="#page-1">Education</a></li>
-                <li><a href="#page-2">Experience</a></li>
-                <li><a href="#page-3">Skills</a></li>
-              </ul>
-            </nav>
-          </div>
-          <div class="col-md-9">
-            <div id="page-1" class="page one">
-              <h2 class="heading">Education</h2>
-              <div class="resume-wrap d-flex ftco-animate">
-                <div
-                  class="icon d-flex align-items-center justify-content-center">
-                  <span class="flaticon-ideas"></span>
-                </div>
-                <div class="text pl-3">
-                  <span class="date">2019-2023</span>
-                  <h2>Bachelor of Science in Information Technology</h2>
-                  <span class="position"
-                    >Polytechnic University of the Philippines - San Pedro
-                    Campus</span
-                  >
-                </div>
-              </div>
+    <!-- RESUME -->
+    <section id="resume">
+      <div class="section-label">Background</div>
+      <h2 class="section-title">Resume</h2>
+      <div class="resume-cols">
+        <div class="reveal">
+          <h3>Education</h3>
+          <div class="timeline-item">
+            <div class="tl-date">2019 — 2023</div>
+            <div class="tl-title">
+              Bachelor of Science in Information Technology
             </div>
-            <div id="page-2" class="page two">
-              <h2 class="heading">Experience</h2>
-              <div class="resume-wrap d-flex ftco-animate">
-                <div
-                  class="icon d-flex align-items-center justify-content-center">
-                  <span class="flaticon-ideas"></span>
-                </div>
-                <div class="text pl-3">
-                  <span class="date">2023</span>
-                  <h2>Web Developer</h2>
-                  <span class="position">QPAX Traffic Systems Inc.</span>
-                  <p>
-                    I contributed to the front-end interface using Vue.js with
-                    Nuxt.js and Bootstrap, focusing on the integration of Axios
-                    for sending and retrieving data from the Laravel backend.
-                    Additionally, I played a key role in developing backend
-                    functionality with Laravel, ensuring seamless data
-                    management and user authentication. I also designed a robust
-                    MySQL database schema for efficient asset information
-                    storage and management.
-                  </p>
-                </div>
-              </div>
-              <div class="resume-wrap d-flex ftco-animate">
-                <div
-                  class="icon d-flex align-items-center justify-content-center">
-                  <span class="flaticon-ideas"></span>
-                </div>
-                <div class="text pl-3">
-                  <span class="date">2022-2023</span>
-                  <h2>Aspiring Backend Developer</h2>
-                  <span class="position">Capstone Project</span>
-                  <p>
-                    I actively contributed to the development of the backend for
-                    a School Information System capstone project. Successfully
-                    created a comprehensive system featuring QR code-based
-                    attendance tracking, a PHP-driven grading system, and
-                    simplified PDF report generation. Integrated email
-                    notifications for student attendance and concerns to enhance
-                    communication within the system.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div id="page-3" class="page three">
-              <h2 class="heading">Skills</h2>
-              <div class="row">
-                <div class="col-md-6 animate-box">
-                  <div class="progress-wrap ftco-animate">
-                    <div
-                      class="d-flex justify-content-between align-items-center">
-                      <div class="h3 mb-0">HTML</div>
-                      <div>Intermediate</div>
-                    </div>
-                    <div class="progress">
-                      <div
-                        class="progress-bar color-1"
-                        role="progressbar"
-                        aria-valuenow="55"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                        style="width: 55%"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 animate-box">
-                  <div class="progress-wrap ftco-animate">
-                    <div
-                      class="d-flex justify-content-between align-items-center">
-                      <div class="h3 mb-0">CSS</div>
-                      <div>Intermediate</div>
-                    </div>
-                    <div class="progress">
-                      <div
-                        class="progress-bar color-1"
-                        role="progressbar"
-                        aria-valuenow="49"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                        style="width: 49%"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 animate-box">
-                  <div class="progress-wrap ftco-animate">
-                    <div
-                      class="d-flex justify-content-between align-items-center">
-                      <div class="h3 mb-0">Javascript</div>
-                      <div>Intermediate</div>
-                    </div>
-                    <div class="progress">
-                      <div
-                        class="progress-bar color-1"
-                        role="progressbar"
-                        aria-valuenow="46"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                        style="width: 46%"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 animate-box">
-                  <div class="progress-wrap ftco-animate">
-                    <div
-                      class="d-flex justify-content-between align-items-center">
-                      <div class="h3 mb-0">PHP</div>
-                      <div>Intermediate</div>
-                    </div>
-                    <div class="progress">
-                      <div
-                        class="progress-bar color-1"
-                        role="progressbar"
-                        aria-valuenow="59"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                        style="width: 59%"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 animate-box">
-                  <div class="progress-wrap ftco-animate">
-                    <div
-                      class="d-flex justify-content-between align-items-center">
-                      <div class="h3 mb-0">MySQL</div>
-                      <div>Intermediate</div>
-                    </div>
-                    <div class="progress">
-                      <div
-                        class="progress-bar color-1"
-                        role="progressbar"
-                        aria-valuenow="59"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                        style="width: 59%"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 animate-box">
-                  <div class="progress-wrap ftco-animate">
-                    <div
-                      class="d-flex justify-content-between align-items-center">
-                      <div class="h3 mb-0">WordPress</div>
-                      <div>Beginner</div>
-                    </div>
-                    <div class="progress">
-                      <div
-                        class="progress-bar color-1"
-                        role="progressbar"
-                        aria-valuenow="19"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                        style="width: 19%"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 animate-box">
-                  <div class="progress-wrap ftco-animate">
-                    <div
-                      class="d-flex justify-content-between align-items-center">
-                      <div class="h3 mb-0">VueJs</div>
-                      <div>Intermediate</div>
-                    </div>
-                    <div class="progress">
-                      <div
-                        class="progress-bar color-1"
-                        role="progressbar"
-                        aria-valuenow="49"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                        style="width: 49%"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 animate-box">
-                  <div class="progress-wrap ftco-animate">
-                    <div
-                      class="d-flex justify-content-between align-items-center">
-                      <div class="h3 mb-0">Laravel</div>
-                      <div>Intermediate</div>
-                    </div>
-                    <div class="progress">
-                      <div
-                        class="progress-bar color-1"
-                        role="progressbar"
-                        aria-valuenow="52"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                        style="width: 52%"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="tl-org">
+              Polytechnic University of the Philippines — San Pedro Campus
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="ftco-section ftco-project" id="projects-section">
-      <div class="container-fluid px-md-0">
-        <div class="row no-gutters justify-content-center pb-5">
-          <div class="col-md-12 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Projects</h1>
-            <h2 class="mb-4">My Projects</h2>
-            <p>
-              Explore my coding projects on
-              <a
-                href="https://github.com/stvnfrlls"
-                target="_blank"
-                rel="noopener noreferrer"
-                >GitHub</a
-              >.
-            </p>
+          <h3 style="margin-top: 52px">Skills</h3>
+          <div class="skills-grid">
+            <div class="skill-item">
+              <span class="skill-name">PHP</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" style="width: 59%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">MySQL</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" style="width: 59%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Laravel</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" style="width: 52%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Vue.js</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" style="width: 49%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">HTML</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" style="width: 55%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">CSS</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" style="width: 49%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">JavaScript</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" style="width: 46%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">WordPress</span>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-fill" style="width: 19%"></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="row no-gutters">
-          <div class="col-md-6">
-            <div
-              class="project img ftco-animate d-flex justify-content-center align-items-center"
-              style="background-image: url(images/IMPOS.png)">
-              <div class="overlay"></div>
-              <div class="text text-center p-4">
-                <h3>
-                  <a href="http://ims-pos.rf.gd/"
-                    >Inventory Management | Point of Sale System</a
-                  >
-                </h3>
-                <span>Self Made Project</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div
-              class="project img ftco-animate d-flex justify-content-center align-items-center"
-              style="background-image: url(images/SIMS.png)">
-              <div class="overlay"></div>
-              <div class="text text-center p-4">
-                <h3>
-                  <a href="http://sims.rf.gd/"
-                    >School Information System (SIS) for Pre-school and Grade
-                    School Department of Colegio De San Pedro</a
-                  >
-                </h3>
-                <span>Capstone Project</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div
-              class="project img ftco-animate d-flex justify-content-center align-items-center"
+
+        <div class="reveal" style="transition-delay: 0.15s">
+          <h3>Experience</h3>
+          <div class="timeline-item">
+            <div class="tl-date">February 2024 — March 2026</div>
+            <div class="tl-title">Junior PHP Developer</div>
+            <div class="tl-org">Volenday &mdash; Makati, Manila</div>
+            <ul
+              class="tl-desc"
               style="
-                background-image: url(images/Scorps.png);
-                background-size: cover;
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
               ">
-              <div class="overlay"></div>
-              <div class="text text-center p-4">
-                <h3>
-                  <a href="http://scorps.rf.gd/"
-                    >Scorps PH | Ecommerce System</a
-                  >
-                </h3>
-                <span>Group Project</span>
-              </div>
-            </div>
+              <li>
+                Reduced manual sales reporting time by 50% by building automated
+                PHP workflows, improving overall data accuracy.
+              </li>
+              <li>
+                Designed a form-driven product recommendation system enabling
+                personalized e-commerce suggestions tailored to individual user
+                preferences.
+              </li>
+              <li>
+                Expanded localization capabilities of a custom Shopify
+                translation module, enabling multilingual support for non-native
+                sections and streamlining content management for international
+                audiences.
+              </li>
+              <li>
+                Improved PrestaShop Back Office security by developing an Audit
+                Trail module that detects suspicious activity, logs attacker IPs
+                and timestamps, and notifies senior developers in real time.
+              </li>
+              <li>
+                Built a custom PrestaShop Recently Viewed Products module,
+                enabling per-session product tracking to encourage return
+                purchases.
+              </li>
+              <li>
+                Built and refined responsive UI components in HTML, CSS, and
+                JavaScript, improving cross-device usability and reducing layout
+                inconsistencies.
+              </li>
+              <li>
+                Performed system upgrades, patch management, and regression
+                testing, minimizing post-deployment defects.
+              </li>
+              <li>
+                Collaborated in Agile/Scrum environments, contributing to sprint
+                planning, backlog refinement, and on-time delivery of
+                production-ready features.
+              </li>
+            </ul>
           </div>
-          <div class="col-md-6">
-            <div
-              class="project img ftco-animate d-flex justify-content-center align-items-center"
-              style="background-image: url(images/ThreadVista.png)">
-              <div class="overlay"></div>
-              <div class="text text-center p-4">
-                <h3>
-                  <a href="https://threadvista.wordpress.com/"
-                    >Ecommerce WordPress Website Design</a
-                  >
-                </h3>
-                <span>Self Made Project</span>
-              </div>
+          <div class="timeline-item">
+            <div class="tl-date">May 2023 — August 2023</div>
+            <div class="tl-title">Web Developer Intern</div>
+            <div class="tl-org">
+              QPAX Traffic Systems Inc. &mdash; Makati, Manila
             </div>
+            <ul
+              class="tl-desc"
+              style="
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+              ">
+              <li>
+                Developed an in-house Asset Management System that tracks assets
+                distributed per company department.
+              </li>
+              <li>
+                Built frontend components using Vue.js and Nuxt.js, ensuring
+                responsive design across devices.
+              </li>
+              <li>
+                Implemented backend features in Laravel including
+                authentication, validation, and workflow logic.
+              </li>
+              <li>
+                Designed relational database schemas and optimized queries to
+                improve data retrieval efficiency.
+              </li>
+              <li>
+                Integrated REST APIs using Axios to enable seamless
+                frontend-backend communication.
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <footer class="ftco-footer ftco-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <p>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;
-              <script>
-                document.write(new Date().getFullYear());
-              </script>
-              All rights reserved | This template is made with
-              <i class="icon-heart color-danger" aria-hidden="true"></i> by
-              <a href="https://colorlib.com" target="_blank">Colorlib</a>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-label">Work</div>
+      <h2 class="section-title">Selected Projects</h2>
+
+      <div class="projects-grid">
+        <!-- Cafe Snap -->
+        <div class="project-card project-card--icon reveal">
+          <img src="images/CAFE-SNAP.png" alt="Cafe Snap" />
+          <div class="project-info">
+            <div class="project-tag">Self-made Project</div>
+            <div class="project-name">Cafe Snap</div>
+            <p class="project-sub">
+              A cafe discovery and snapshot web application.
             </p>
+            <a href="https://cafe-snap.vercel.app/" class="project-link">View project</a>
           </div>
+          <div class="project-num">01</div>
+        </div>
+
+        <!-- Cinerama -->
+        <div
+          class="project-card project-card--icon reveal"
+          style="transition-delay: 0.1s">
+          <img src="images/CINERAMA.png" alt="Cinerama" />
+          <div class="project-info">
+            <div class="project-tag">Self-made Project</div>
+            <div class="project-name">Cinerama</div>
+            <p class="project-sub">
+              A cinema information and browsing platform.
+            </p>
+            <a href="https://cinerama-project.vercel.app/" class="project-link">View project</a>
+          </div>
+          <div class="project-num">02</div>
+        </div>
+
+        <!-- School Info System -->
+        <div class="project-card reveal" style="transition-delay: 0.2s">
+          <img src="images/SIMS.png" alt="School Information System" />
+          <div class="project-info">
+            <div class="project-tag">Capstone Project</div>
+            <div class="project-name">School Information System</div>
+            <p class="project-sub">
+              A complete SIS for the pre-school and grade school department of
+              Colegio De San Pedro.
+            </p>
+            <a
+              href="https://github.com/stvnfrlls/CapstoneProject-SIMS"
+              target="_blank"
+              rel="noopener"
+              class="project-link"
+              >View Github Repo</a
+            >
+          </div>
+          <div class="project-num">03</div>
         </div>
       </div>
+
+      <p
+        style="
+          margin-top: 40px;
+          font-family: var(--mono);
+          font-size: 0.72rem;
+          color: var(--muted);
+        ">
+        More on
+        <a
+          href="https://github.com/stvnfrlls"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="color: var(--accent); text-decoration: none"
+          >GitHub</a
+        >
+      </p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-name"><span>S</span>teven Frilles</div>
+      <ul class="footer-links">
+        <li><a href="mailto:stvnfrlls@gmail.com">Email</a></li>
+        <li>
+          <a href="https://github.com/stvnfrlls" target="_blank" rel="noopener"
+            >GitHub</a
+          >
+        </li>
+      </ul>
+      <div class="footer-copy">&copy; <span id="year"></span></div>
     </footer>
 
-    <!-- loader -->
-    <div id="ftco-loader" class="show fullscreen">
-      <svg class="circular" width="48px" height="48px">
-        <circle
-          class="path-bg"
-          cx="24"
-          cy="24"
-          r="22"
-          fill="none"
-          stroke-width="4"
-          stroke="#eeeeee" />
-        <circle
-          class="path"
-          cx="24"
-          cy="24"
-          r="22"
-          fill="none"
-          stroke-width="4"
-          stroke-miterlimit="10"
-          stroke="#F96D00" />
-      </svg>
-    </div>
+    <script>
+      // Year
+      document.getElementById("year").textContent = new Date().getFullYear();
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/jquery.animateNumber.min.js"></script>
-    <script src="js/scrollax.min.js"></script>
+      // Nav scroll
+      const nav = document.getElementById("main-nav");
+      window.addEventListener("scroll", () => {
+        nav.classList.toggle("scrolled", window.scrollY > 40);
+      });
 
-    <script src="js/main.js"></script>
+      // Scroll reveal
+      const revealEls = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 },
+      );
+      revealEls.forEach((el) => observer.observe(el));
+    </script>
   </body>
 </html>
