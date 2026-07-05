@@ -10,7 +10,7 @@
     --bg: #0d0c0b;
     --bg-2: #141312;
     --text: #f0ece5;
-    --muted: #7a756e;
+    --muted: #9c968d;
     --accent: #d4845a;
     --accent-pale: rgba(212, 132, 90, 0.08);
     --border: rgba(240, 236, 229, 0.08);
@@ -114,6 +114,23 @@ nav.scrolled {
     padding: 0 60px 80px;
     position: relative;
     overflow: hidden;
+}
+
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 10px 16px;
+    z-index: 999;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+}
+
+.skip-link:focus {
+    left: 12px;
+    top: 12px;
 }
 
 .hero-grain {

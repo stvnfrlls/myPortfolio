@@ -4,6 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Steven Frilles — PHP Developer with 2+ years building custom features, automated reporting tools, and REST API integrations for Shopify, PrestaShop, and WordPress." />
+  <link rel="canonical" href="https://stvnfrlls.github.io/myPortfolio/" />
   <title>Steven Frilles — Web Developer</title>
 
   <link rel="icon" href="asset/favicon.ico" sizes="any">
@@ -12,13 +15,18 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
+  <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap"
-    rel="stylesheet" />
+    onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" />
+  </noscript>
   <link rel="stylesheet" href="asset/style.css">
 </head>
 
 <body>
+  <a href="#home" class="skip-link">Skip to content</a>
   <!-- NAV -->
   <nav id="main-nav">
     <a class="nav-logo" href="#home"><span>S</span>teven Frilles</a>
@@ -98,7 +106,7 @@
       <div class="about-right reveal" style="transition-delay: 0.15s">
         <div class="about-photo-accent"></div>
         <div class="about-photo-wrap">
-          <img src="images/ME.jpg" alt="Steven Frilles" />
+          <img src="images/ME.jpg" alt="Steven Frilles" width="600" height="800" loading="lazy" decoding="async" />
         </div>
       </div>
     </div>
@@ -278,7 +286,8 @@
     <div class="projects-grid">
       <!-- Student Information System -->
       <div class="project-card reveal">
-        <img src="images/SIMS.png" alt="Student Information System" />
+        <img src="images/SIMS.png" alt="Student Information System" width="800" height="600" loading="lazy"
+          decoding="async" />
         <div class="project-info">
           <div class="project-tag">Capstone Project</div>
           <div class="project-name">Student Information System</div>
@@ -295,7 +304,7 @@
 
       <!-- Movie Lookup -->
       <div class="project-card project-card--icon reveal" style="transition-delay: 0.1s">
-        <img src="images/CINERAMA.png" alt="Movie Lookup" />
+        <img src="images/CINERAMA.png" alt="Movie Lookup" width="800" height="600" loading="lazy" decoding="async" />
         <div class="project-info">
           <div class="project-tag">Self-made Project</div>
           <div class="project-name">Movie Lookup</div>
@@ -311,7 +320,7 @@
 
       <!-- Cafe Snap -->
       <div class="project-card project-card--icon reveal" style="transition-delay: 0.2s">
-        <img src="images/CAFE-SNAP.png" alt="Cafe Snap" />
+        <img src="images/CAFE-SNAP.png" alt="Cafe Snap" width="800" height="600" loading="lazy" decoding="async" />
         <div class="project-info">
           <div class="project-tag">Self-made Project</div>
           <div class="project-name">Cafe Snap</div>
@@ -348,7 +357,7 @@
     <div class="footer-copy">&copy; <span id="year"></span></div>
   </footer>
 
-  <script src="asset/script.js"></script>
+  <script src="asset/script.js" defer></script>
 </body>
 
 </html>
