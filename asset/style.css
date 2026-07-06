@@ -37,6 +37,11 @@ body {
     color: var(--bg);
 }
 
+a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
 /* ---- Scrollbar ---- */
 ::-webkit-scrollbar {
     width: 3px;
@@ -641,6 +646,11 @@ section {
     width: 36px;
 }
 
+.project-link:hover,
+.project-link:focus {
+    text-decoration: underline;
+}
+
 .project-card:hover .project-link {
     opacity: 1;
     transform: translateY(0);
@@ -715,6 +725,12 @@ footer {
     font-family: var(--mono);
     font-size: 0.65rem;
     color: var(--muted);
+}
+
+.footer-copy-link,
+p a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
 }
 
 /* ---- ANIMATIONS ---- */
