@@ -7,7 +7,7 @@
   <meta name="description"
     content="Steven Frilles — PHP Developer with 2+ years building custom features, automated reporting tools, and REST API integrations for Shopify, PrestaShop, and WordPress." />
   <link rel="canonical" href="https://stvnfrlls.github.io/myPortfolio/" />
-  <title>Steven Frilles — Web Developer</title>
+  <title>Steven Frilles — PHP / Full-Stack Developer</title>
 
   <link rel="icon" href="https://qyi5vwmkee3r8cdl.public.blob.vercel-storage.com/portfolio-assets/images/favicon.ico"
     sizes="any">
@@ -18,106 +18,143 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://qyi5vwmkee3r8cdl.public.blob.vercel-storage.com" crossorigin />
+  <!-- Fixed weights only (no opsz axis range) — smaller font payload than a full variable-font request -->
   <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
     onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
     <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" />
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" />
   </noscript>
-  <link rel="stylesheet" href="asset/style.css">
+  <link rel="stylesheet" href="asset/style.min.css">
 </head>
 
 <body>
   <a href="#home" class="skip-link">Skip to content</a>
+
   <!-- NAV -->
   <nav id="main-nav">
-    <a class="nav-logo" href="#home"><span>S</span>teven Frilles</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#resume">Resume</a></li>
-      <li><a href="#projects">Projects</a></li>
+    <a class="nav-logo" href="#home">Steven Frilles</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" data-nav>About</a></li>
+      <li><a href="#resume" data-nav>Resume</a></li>
+      <li><a href="#projects" data-nav>Projects</a></li>
+      <li><a href="https://qyi5vwmkee3r8cdl.public.blob.vercel-storage.com/portfolio-assets/Resume.pdf" target="_blank"
+          rel="noopener" class="nav-cta">Résumé (PDF)</a></li>
     </ul>
   </nav>
 
   <main>
-    <!-- HERO -->
+    <!-- HERO — styled as the header block of a shipping manifest -->
     <section id="home">
-      <div class="hero-grain"></div>
-      <div class="hero-bg-text">SF</div>
       <div class="hero-inner">
-        <p class="hero-label">Available for work</p>
-        <h1 class="hero-name">Steven<br /><em>Frilles</em></h1>
-        <p class="hero-desc">
-          PHP Developer with 2+ years of professional experience building
-          custom features, automated reporting tools, and REST API
-          integrations for live e-commerce platforms across Shopify,
-          PrestaShop, and WordPress. Based in San Pedro, Laguna.
-        </p>
+        <div class="manifest-frame reveal">
+          <div class="manifest-topline">
+            <span>PORTFOLIO MANIFEST</span>
+            <span class="manifest-ref">REF. SF-2026-DEV</span>
+          </div>
+
+          <div class="manifest-fields">
+            <div class="mf-field">
+              <span class="mf-label">From</span>
+              <span class="mf-value">Steven Frilles, San Pedro, Laguna, PH</span>
+            </div>
+            <div class="mf-field">
+              <span class="mf-label">Role</span>
+              <span class="mf-value">PHP / Full-Stack Developer</span>
+            </div>
+            <div class="mf-field">
+              <span class="mf-label">Status</span>
+              <span class="mf-value mf-stamp">Available for work</span>
+            </div>
+          </div>
+
+          <h1 class="hero-name">Steven <em>Frilles</em></h1>
+
+          <p class="hero-desc">
+            PHP developer with 2+ years shipping custom features, automated reporting tools,
+            and REST API integrations for live e-commerce platforms — Shopify, PrestaShop,
+            and WordPress. Lately: full-stack builds and data analysis on the side.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">See the work</a>
+            <a href="#resume" class="btn btn-ghost">Read the resume</a>
+          </div>
+        </div>
       </div>
-      <div class="hero-scroll">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
-      </div>
+      <div class="tear-line" aria-hidden="true"></div>
     </section>
 
     <!-- ABOUT -->
     <section id="about">
-      <div class="section-label">Introduction</div>
-      <h2 class="section-title">About Me</h2>
+      <div class="section-head reveal">
+        <span class="eyebrow">01 — Introduction</span>
+        <h2 class="section-title">About</h2>
+      </div>
       <div class="about-grid">
         <div class="about-text reveal">
           <p>
-            I'm a <strong>PHP Developer</strong> with over two years of
-            professional experience building custom features, automated
-            reporting tools, and REST API integrations for live e-commerce
-            platforms. I'm skilled in maintaining legacy systems, managing
-            product listings and storefront customization, and shipping new
-            functionality across <strong>Shopify</strong>,
-            <strong>PrestaShop</strong>, and <strong>WordPress</strong>.
+            I'm a <strong>PHP developer</strong> with over two years of professional experience
+            building custom features, automated reporting tools, and REST API integrations for
+            live e-commerce platforms. I'm comfortable maintaining legacy systems, managing
+            storefront customization, and shipping new functionality across
+            <strong>Shopify</strong>, <strong>PrestaShop</strong>, and <strong>WordPress</strong>.
           </p>
           <p>
-            My work includes custom PrestaShop modules, a one-click PHP sales
-            reporting tool that replaced manual spreadsheet work, and Shopify
-            storefront extensions. I'm committed to continuous learning and
-            collaborate closely with teams to deliver full-stack solutions,
-            from database schema to API to front-end interface.
+            My work includes custom PrestaShop modules, a one-click PHP sales reporting tool
+            that replaced manual spreadsheet work, and Shopify storefront extensions. I
+            collaborate closely with teams to deliver full-stack solutions — from database
+            schema to API to front-end interface.
           </p>
           <p>
-            I've recently expanded into <strong>data analysis</strong>, using
-            Python and interactive dashboards to clean, analyze, and visualize
-            business data.
+            More recently I've been expanding into <strong>data analysis</strong>, using Python
+            and interactive dashboards to clean, analyze, and visualize business data.
           </p>
-          <ul class="about-info">
-            <li>
-              <span class="label">Full name</span>
-              <span class="value">Steven Frilles</span>
-            </li>
-            <li>
-              <span class="label">Date of birth</span>
-              <span class="value">November 3, 1999</span>
-            </li>
-            <li>
-              <span class="label">Location</span>
-              <span class="value">San Pedro, Laguna, Philippines</span>
-            </li>
-            <li>
-              <span class="label">Email</span>
-              <span class="value">stvnfrlls@gmail.com</span>
-            </li>
-            <li>
-              <span class="label">Phone</span>
-              <span class="value">+63-952-440-4317</span>
-            </li>
-          </ul>
+
+          <dl class="detail-list">
+            <div class="detail-row">
+              <dt>Full name</dt>
+              <dd>Steven Frilles</dd>
+            </div>
+            <div class="detail-row">
+              <dt>Based in</dt>
+              <dd>San Pedro, Laguna, Philippines</dd>
+            </div>
+            <div class="detail-row">
+              <dt>Email</dt>
+              <dd><a href="mailto:stvnfrlls@gmail.com">stvnfrlls@gmail.com</a></dd>
+            </div>
+            <div class="detail-row">
+              <dt>Phone</dt>
+              <dd>+63 952 440 4317</dd>
+            </div>
+            <div class="detail-row">
+              <dt>GitHub</dt>
+              <dd><a href="https://github.com/stvnfrlls" target="_blank" rel="noopener">github.com/stvnfrlls</a></dd>
+            </div>
+          </dl>
+
           <a href="https://qyi5vwmkee3r8cdl.public.blob.vercel-storage.com/portfolio-assets/Resume.pdf"
-            download="Resume.pdf" class="cv-btn">Download CV</a>
+            download="Resume.pdf" class="btn btn-primary">Download CV</a>
         </div>
-        <div class="about-right reveal" style="transition-delay: 0.15s">
-          <div class="about-photo-accent"></div>
-          <div class="about-photo-wrap">
+
+        <div class="about-photo reveal">
+          <div class="id-card">
+            <div class="id-card-top">
+              <span>ISSUED TO</span>
+              <span class="id-card-stamp">VERIFIED</span>
+            </div>
             <img src="https://qyi5vwmkee3r8cdl.public.blob.vercel-storage.com/portfolio-assets/images/ME.jpg"
               alt="Steven Frilles" width="600" height="800" loading="lazy" decoding="async" />
+            <div class="id-card-bottom">
+              <span class="id-card-name">Steven Frilles</span>
+              <span class="id-card-role">PHP Developer</span>
+            </div>
           </div>
         </div>
       </div>
@@ -125,290 +162,236 @@
 
     <!-- RESUME -->
     <section id="resume">
-      <div class="section-label">Background</div>
-      <h2 class="section-title">Resume</h2>
-      <div class="resume-cols">
-        <div class="reveal">
-          <h3>Education</h3>
-          <div class="timeline-item">
-            <div class="tl-date">2019 — 2023</div>
-            <div class="tl-title">
-              Bachelor of Science in Information Technology
-            </div>
-            <div class="tl-org">
-              Polytechnic University of the Philippines — San Pedro Campus
-            </div>
+      <div class="section-head reveal">
+        <span class="eyebrow">02 — Background</span>
+        <h2 class="section-title">Resume</h2>
+      </div>
+
+      <div class="resume-grid">
+        <div class="resume-side reveal">
+          <h3 class="block-title">Education</h3>
+          <div class="line-item">
+            <div class="li-period">2019 — 2023</div>
+            <div class="li-title">BS in Information Technology</div>
+            <div class="li-org">Polytechnic University of the Philippines — San Pedro Campus</div>
           </div>
 
-          <h3 style="margin-top: 52px">Skills</h3>
-          <div class="skills-grid">
-            <div class="skill-item">
-              <span class="skill-name">PHP</span>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-fill" style="width: 62%"></div>
+          <h3 class="block-title" style="margin-top: 3rem">Skills</h3>
+          <div class="tag-groups">
+            <div class="tag-group">
+              <span class="tag-group-label">Backend</span>
+              <div class="tag-row">
+                <span class="tag">PHP</span>
+                <span class="tag">Laravel</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">PostgreSQL</span>
               </div>
             </div>
-            <div class="skill-item">
-              <span class="skill-name">Laravel</span>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-fill" style="width: 56%"></div>
+            <div class="tag-group">
+              <span class="tag-group-label">Frontend</span>
+              <div class="tag-row">
+                <span class="tag">React.js</span>
+                <span class="tag">Vue.js</span>
+                <span class="tag">JavaScript (ES6+)</span>
+                <span class="tag">HTML5 / CSS3</span>
               </div>
             </div>
-            <div class="skill-item">
-              <span class="skill-name">MySQL / PostgreSQL</span>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-fill" style="width: 58%"></div>
+            <div class="tag-group">
+              <span class="tag-group-label">E-commerce platforms</span>
+              <div class="tag-row">
+                <span class="tag">Shopify (Liquid)</span>
+                <span class="tag">PrestaShop</span>
+                <span class="tag">WordPress</span>
               </div>
             </div>
-            <div class="skill-item">
-              <span class="skill-name">Vue.js / React.js</span>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-fill" style="width: 50%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">JavaScript (ES6+)</span>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-fill" style="width: 48%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">HTML5 / CSS3</span>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-fill" style="width: 55%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">Shopify (Liquid)</span>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-fill" style="width: 45%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">PrestaShop</span>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-fill" style="width: 45%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">WordPress</span>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-fill" style="width: 30%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">Git / Docker</span>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-fill" style="width: 40%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">Python (pandas, matplotlib)</span>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-fill" style="width: 35%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">SQL</span>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-fill" style="width: 40%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">Data Cleaning / Visualization</span>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-fill" style="width: 35%"></div>
+            <div class="tag-group">
+              <span class="tag-group-label">Data &amp; tooling</span>
+              <div class="tag-row">
+                <span class="tag">Python (pandas)</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Data Visualization</span>
+                <span class="tag">Git</span>
+                <span class="tag">Docker</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="reveal" style="transition-delay: 0.15s">
-          <h3>Experience</h3>
-          <div class="timeline-item">
-            <div class="tl-date">February 2024 — March 2026</div>
-            <div class="tl-title">PHP Developer</div>
-            <div class="tl-org">Volenday &mdash; Makati, Manila</div>
-            <ul class="tl-desc" style="
-                    list-style: none;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 8px;
-                  ">
-              <li>
-                Developed custom platform features including an Audit Trail
-                system, a Recently Viewed Products tracker, and a product
-                recommendation engine to improve platform reliability.
-              </li>
-              <li>
-                Built and maintained REST API integrations connecting a
-                legacy e-commerce system to new services, and extended a
-                multilingual Shopify app to support non-native storefront
-                sections.
-              </li>
-              <li>
-                Built a one-click PHP export feature that consolidated
-                backend sales data into a single CSV/view report, replacing
-                manual spreadsheet work and cutting report generation time by
-                50%.
-              </li>
-              <li>
-                Built campaign landing pages and promotional flows on Shopify
-                using Liquid theme templates, and set up discount vouchers and
-                flash sale mechanics tied to the marketing calendar.
-              </li>
-              <li>
-                Managed and maintained product listings across live Shopify
-                and PrestaShop storefronts, including descriptions, pricing,
-                collections, and inventory data.
-              </li>
-              <li>
-                Performed on-page SEO across Shopify and WordPress, covering
-                meta tag reviews, alt-tag optimization, and semantic HTML
-                corrections.
-              </li>
-              <li>
-                Participated in Agile/Scrum ceremonies including sprint
-                planning and backlog refinement, delivering consistent,
-                on-schedule releases.
-              </li>
-            </ul>
-          </div>
-          <div class="timeline-item">
-            <div class="tl-date">May 2023 — August 2023</div>
-            <div class="tl-title">Web Developer Intern</div>
-            <div class="tl-org">
-              QPAX Traffic Systems Inc. &mdash; Makati, Manila
+        <div class="resume-main reveal">
+          <h3 class="block-title">Experience</h3>
+
+          <article class="job">
+            <div class="job-head">
+              <div>
+                <div class="job-title">PHP Developer</div>
+                <div class="job-org">Volenday — Makati, Manila</div>
+              </div>
+              <div class="job-period">Feb 2024 — Mar 2026</div>
             </div>
-            <ul class="tl-desc" style="
-                    list-style: none;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 8px;
-                  ">
-              <li>
-                Built an end-to-end in-house Asset Management System using
-                Laravel (backend) and Vue.js/Nuxt.js (frontend) to track and
-                manage department assets across the organization.
+            <ul class="job-list">
+              <li>Developed custom platform features include an Audit Trail system, a Recently Viewed Products tracker,
+                and a product recommendation engine to improve platform reliability. </li>
+              <li>Built and maintained REST API integrations connecting a legacy e-commerce system to new services and
+                extended a multilingual Shopify app to support non-native storefront sections.</li>
+              <li>Built a one-click PHP export feature that consolidated backend sales data into a single CSV/view
+                report, replacing manual spreadsheet work and cutting report generation time by 50%. Prepared
+                post-campaign performance reports covering sales results, voucher redemption rates, and traffic metrics.
               </li>
-              <li>
-                Designed relational database schemas, wrote and optimized
-                MySQL queries, and integrated REST APIs via Axios to connect
-                frontend components with backend services.
+
+              <li>Built campaign landing pages and promotional flows on Shopify using Liquid theme templates, set up
+                discount vouchers and flash sale mechanics, and coordinated updates with the marketing calendar to meet
+                launch deadlines.</li>
+              <li>Managed and maintained product listings across live Shopify and PrestaShop storefronts, including
+                descriptions, pricing, collections, and inventory data, with regular audits for content accuracy, image
+                quality, and stock status.
               </li>
-              <li>
-                Implemented Laravel authentication, validation logic, and
-                business rules, and developed reusable Vue.js components to
-                support a clean, maintainable codebase.
-              </li>
+              <li>Monitored order status, stock availability, and fulfillment accuracy across platforms, coordinating
+                with relevant teams to resolve listing and inventory discrepancies.</li>
+              <li>Downloaded, organized, and uploaded brand imagery across the Shopify storefront, ensuring assets met
+                visual standards and retailer requirements. </li>
+              <li>Performed on-page SEO across Shopify and WordPress, covering meta tag reviews, alt-tag optimization,
+                robots.txt maintenance, and semantic HTML corrections. </li>
+              <li>Wrote responsive UI components and conducted testing on new features and system upgrades before
+                production releases. </li>
+              <li>Participated in Agile/Scrum ceremonies including sprint planning and
+                backlog refinement, delivering consistent, on-schedule releases.</li>
             </ul>
-          </div>
+          </article>
+
+          <article class="job">
+            <div class="job-head">
+              <div>
+                <div class="job-title">Web Developer Intern</div>
+                <div class="job-org">QPAX Traffic Systems Inc. — Makati, Manila</div>
+              </div>
+              <div class="job-period">May 2023 — Aug 2023</div>
+            </div>
+            <ul class="job-list">
+              <li>Built an end-to-end in-house Asset Management System using Laravel
+                (backend) and Vue.js/Nuxt.js (frontend) to track and manage department
+                assets across the organization.</li>
+              <li>Designed relational database schemas, wrote and optimized MySQL
+                queries, and integrated REST APIs via Axios to connect frontend
+                components with backend services.</li>
+              <li>Implemented Laravel authentication, validation logic, and business
+                rules, and developed reusable Vue.js components to support a clean,
+                maintainable codebase.</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
     <section id="projects">
-      <div class="section-label">Work</div>
-      <h2 class="section-title">Selected Projects</h2>
-
-      <div class="projects-grid">
-        <!-- Student Information System -->
-        <div class="project-card reveal">
-          <img src="https://qyi5vwmkee3r8cdl.public.blob.vercel-storage.com/portfolio-assets/images/SIMS.png"
-            alt="Student Information System" width="800" height="600" loading="lazy" decoding="async" />
-          <div class="project-info">
-            <div class="project-tag">Capstone Project</div>
-            <div class="project-name">Student Information System</div>
-            <p class="project-sub">
-              Full-stack SIS with a Laravel REST API backend and a Vue 3 SPA
-              frontend covering student records, enrollment workflows, and
-              academic data management.
-            </p>
-            <a href="https://github.com/stvnfrlls/CapstoneProject-SIMS" target="_blank" rel="noopener"
-              class="project-link">View Github Repo</a>
-          </div>
-          <div class="project-num">01</div>
-        </div>
-
-        <!-- E-Commerce Sales Analytics Dashboard -->
-        <div class="project-card reveal" style="transition-delay: 0.05s">
-          <img
-            src="https://qyi5vwmkee3r8cdl.public.blob.vercel-storage.com/portfolio-assets/images/ecommerce-dashboard.png"
-            alt="E-Commerce Sales Analytics Dashboard" width="800" height="600" loading="lazy" decoding="async" />
-          <div class="project-info">
-            <div class="project-tag">Data Analysis Project</div>
-            <div class="project-name">E-Commerce Sales Analytics Dashboard</div>
-            <p class="project-sub">
-              Cleaned and analyzed a 1M+ row e-commerce dataset using pandas, then built and deployed
-              an interactive React/Recharts dashboard visualizing revenue trends, top products, and
-              country-level sales.
-            </p>
-            <a href="https://ecommerce-dashboard-rho-peach.vercel.app/" target="_blank" rel="noopener"
-              class="project-link">View live dashboard</a>
-          </div>
-          <div class="project-num">02</div>
-        </div>
-
-        <!-- Movie Lookup -->
-        <div class="project-card project-card--icon reveal" style="transition-delay: 0.1s">
-          <img src="https://qyi5vwmkee3r8cdl.public.blob.vercel-storage.com/portfolio-assets/images/CINERAMA.png"
-            alt="Movie Lookup" width="800" height="600" loading="lazy" decoding="async" />
-          <div class="project-info">
-            <div class="project-tag">Self-made Project</div>
-            <div class="project-name">Movie Lookup</div>
-            <p class="project-sub">
-              React SPA consuming the OMDB API with dynamic search, paginated
-              results, and detail views built with a clean component
-              architecture and responsive UI.
-            </p>
-            <a href="https://cinerama-project.vercel.app/" class="project-link">View project</a>
-          </div>
-          <div class="project-num">03</div>
-        </div>
-
-        <!-- Cafe Snap -->
-        <div class="project-card project-card--icon reveal" style="transition-delay: 0.2s">
-          <img src="https://qyi5vwmkee3r8cdl.public.blob.vercel-storage.com/portfolio-assets/images/CAFE-SNAP.png"
-            alt="Cafe Snap" width="800" height="600" loading="lazy" decoding="async" />
-          <div class="project-info">
-            <div class="project-tag">Self-made Project</div>
-            <div class="project-name">Cafe Snap</div>
-            <p class="project-sub">
-              A cafe discovery and snapshot web application.
-            </p>
-            <a href="https://cafe-snap.vercel.app/" class="project-link">View project</a>
-          </div>
-          <div class="project-num">04</div>
-        </div>
+      <div class="section-head reveal">
+        <span class="eyebrow">03 — Work</span>
+        <h2 class="section-title">Selected Projects</h2>
       </div>
 
-      <p style="
-              margin-top: 40px;
-              font-family: var(--mono);
-              font-size: 0.72rem;
-              color: var(--muted);
-            ">
+      <div class="projects-grid">
+        <article class="project-card reveal">
+          <div class="project-media">
+            <img src="https://qyi5vwmkee3r8cdl.public.blob.vercel-storage.com/portfolio-assets/images/SIMS.png"
+              alt="Student Information System" width="800" height="600" loading="lazy" decoding="async" />
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="tag tag-accent">Capstone Project</span>
+            </div>
+            <h3 class="project-name">Student Information System</h3>
+            <p class="project-sub">
+              Full-stack SIS with a Laravel REST API backend and a Vue 3 SPA frontend
+              covering student records, enrollment workflows, and academic data
+              management.
+            </p>
+            <a href="https://github.com/stvnfrlls/CapstoneProject-SIMS" target="_blank" rel="noopener"
+              class="project-link">View GitHub repo →</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-media">
+            <img
+              src="https://qyi5vwmkee3r8cdl.public.blob.vercel-storage.com/portfolio-assets/images/ecommerce-dashboard.png"
+              alt="E-Commerce Sales Analytics Dashboard" width="800" height="600" loading="lazy" decoding="async" />
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="tag tag-accent">Data Analysis</span>
+            </div>
+            <h3 class="project-name">E-Commerce Sales Analytics Dashboard</h3>
+            <p class="project-sub">
+              Cleaned and analyzed a 1M+ row e-commerce dataset with pandas, then built
+              and deployed an interactive React/Recharts dashboard visualizing revenue
+              trends, top products, and country-level sales.
+            </p>
+            <a href="https://ecommerce-dashboard-rho-peach.vercel.app/" target="_blank" rel="noopener"
+              class="project-link">View live dashboard →</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-media">
+            <img src="https://qyi5vwmkee3r8cdl.public.blob.vercel-storage.com/portfolio-assets/images/CINERAMA.png"
+              alt="Movie Lookup" width="800" height="600" loading="lazy" decoding="async" />
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="tag tag-accent">Self-made</span>
+            </div>
+            <h3 class="project-name">Movie Lookup</h3>
+            <p class="project-sub">
+              React SPA consuming the OMDB API with dynamic search, paginated results,
+              and detail views built with a clean component architecture and
+              responsive UI.
+            </p>
+            <a href="https://cinerama-project.vercel.app/" target="_blank" rel="noopener" class="project-link">View
+              project →</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-media">
+            <img src="https://qyi5vwmkee3r8cdl.public.blob.vercel-storage.com/portfolio-assets/images/CAFE-SNAP.png"
+              alt="Cafe Snap" width="800" height="600" loading="lazy" decoding="async" />
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="tag tag-accent">Self-made</span>
+            </div>
+            <h3 class="project-name">Cafe Snap</h3>
+            <p class="project-sub">A cafe discovery and snapshot web application.</p>
+            <a href="https://cafe-snap.vercel.app/" target="_blank" rel="noopener" class="project-link">View
+              project →</a>
+          </div>
+        </article>
+      </div>
+
+      <p class="more-link">
         More on
-        <a href="https://github.com/stvnfrlls" target="_blank" rel="noopener noreferrer"
-          style="color: var(--accent); text-decoration: underline; text-underline-offset: 2px">GitHub</a>
+        <a href="https://github.com/stvnfrlls" target="_blank" rel="noopener noreferrer">GitHub →</a>
       </p>
     </section>
   </main>
 
-  <!-- FOOTER -->
+  <!-- FOOTER — styled as a manifest sign-off -->
   <footer>
-    <div class="footer-name"><span>S</span>teven Frilles</div>
-    <ul class="footer-links">
-      <li><a href="mailto:stvnfrlls@gmail.com">Email</a></li>
-      <li>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <span class="footer-name">Steven Frilles</span>
+        <span class="footer-role">PHP / Full-Stack Developer</span>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:stvnfrlls@gmail.com">Email</a>
         <a href="https://github.com/stvnfrlls" target="_blank" rel="noopener">GitHub</a>
-      </li>
-    </ul>
-    <div class="footer-copy">&copy; <span id="year"></span></div>
+        <a href="#home">Back to top ↑</a>
+      </div>
+      <div class="footer-copy">© <span id="year"></span> Steven Frilles. Built &amp; maintained by hand.</div>
+    </div>
   </footer>
 
-  <script src="asset/script.js" defer></script>
+  <script src="asset/script.min.js" defer></script>
 </body>
 
 </html>
